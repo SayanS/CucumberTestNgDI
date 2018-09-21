@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Suite">
+    <test name="Test diary1">
+        <classes>
+            <class name="stepDefinitions.RunCukesTest"></class>
+        </classes>
+    </test>
+
+    <!--<test name="Test diary2">-->
+        <!--<classes>-->
+            <!--<class name="stepDefinitions.HomePageStepDefs"></class>-->
+        <!--</classes>-->
+    <!--</test>-->
+
+</suite>
+
+<!--<suite name="Suite" parallel="tests" thread-count="2" configfailurepolicy="continue">-->
+    <!--<test name="Test diary">-->
+        <!--<packages>-->
+            <!--<package name="stepDefinitions"/>-->
+        <!--</packages>-->
+    <!--</test>-->
+
+<!--</suite>-->
+
