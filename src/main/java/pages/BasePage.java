@@ -19,6 +19,7 @@ public abstract class BasePage {
 
     public BasePage(Browser browser) {
         this.webDriver=browser.getWebDriver();
+        System.out.println("HASH CODE OF THE BROWSER ---------->>> "+browser.hashCode());
         // PageFactory.initElements(this.webDriver, this);
     }
 
@@ -113,12 +114,13 @@ public abstract class BasePage {
         return false;
     }
 
-    public void enterValueIntoField(String xpath, String value){
+    public void enterValueIntoField(String xpath, String value) throws InterruptedException {
         waitFor(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)), TimeUnit.SECONDS,5);
         scrollIntoView(xpath);
         waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)), TimeUnit.SECONDS,5);
         waitFor(ExpectedConditions.elementToBeClickable(By.xpath(xpath)), TimeUnit.SECONDS,3);
         findBy(xpath).sendKeys(value);
+//        Thread.sleep(1000);
     }
 
 

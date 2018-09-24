@@ -5,11 +5,11 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 //@RunWith(Cucumber.class)
 //@CucumberOptions(plugin = {"pretty"})
-@CucumberOptions(features={"src/test/resources/features/globalSearch.feature"}, tags = "@run")
+@CucumberOptions(features={"src/test/resources/features/additional.feature"}, tags = "@run")
 //@Test
-public class RunCukesTest extends AbstractTestNGCucumberTests {
+public class RunCukesTest2 extends AbstractTestNGCucumberTests {
 //    WebDriver webDriver;
-//    public  RunCukesTest(Browser browser){
+//    public  RunCukesTest2(Browser browser){
 //        webDriver=browser.getWebDriver();
 //    }
 }

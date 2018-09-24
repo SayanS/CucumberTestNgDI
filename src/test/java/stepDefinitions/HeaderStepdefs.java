@@ -2,22 +2,30 @@ package stepDefinitions;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import models.Browser;
 import models.SearchProductAutoSuggestLine;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 import pages.Header;
+import utils.TestListener;
 
 import java.util.List;
 
+@Listeners(TestListener.class)
+@Test
 public class HeaderStepdefs {
-    public Header header;
+    private Header header;
+   public Browser browser;
 
-    public HeaderStepdefs(Header header) {
+    public HeaderStepdefs(Header header, Browser browser) {
         this.header = header;
+        this.browser = browser;
     }
 
 
     @Then("^Enter \"([^\"]*)\" into Global Search field$")
-    public void enterIntoGlobalSearchField(String text) {
+    public void enterIntoGlobalSearchField(String text) throws InterruptedException {
         header.enterValueIntoField(header.SEARCH_FIELD, text);
     }
 
@@ -41,7 +49,7 @@ public class HeaderStepdefs {
 
     @Then("^First item of the Autosuggest list of the Header Search should be$")
 //    public void firstItemOfTheAutoSuggestListOfTheHeaderSearchShouldBe(DataTable autosuggestLine) {
-        public void firstItemOfTheAutoSuggestListOfTheHeaderSearchShouldBe(List<SearchProductAutoSuggestLine> autosuggestLineList) {
+    public void firstItemOfTheAutoSuggestListOfTheHeaderSearchShouldBe(List<SearchProductAutoSuggestLine> autosuggestLineList) {
         System.out.println(autosuggestLineList.get(0).getImgLink());
         System.out.println(autosuggestLineList.get(0).getProductName());
         System.out.println(autosuggestLineList.get(0).getPrice());
@@ -69,4 +77,13 @@ public class HeaderStepdefs {
     }
 
 
+    @When("^Set Super value \"([^\"]*)\"$")
+    public void setSuperValue(String value) throws Throwable {
+        this.browser.setSuperValue(value);
+    }
+
+    @When("^Reprint Super value$")
+    public void reprintSuperValue() throws Throwable {
+        System.out.println(browser.getSuperValue());
+    }
 }

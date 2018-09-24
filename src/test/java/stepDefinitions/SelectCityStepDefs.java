@@ -18,7 +18,7 @@ public class SelectCityStepDefs {
     }
 
     @When("^Enter \"([^\"]*)\" into City name field on Select city pop-up$")
-    public void enterIntoCityNameFieldOnSelectCityPopUp(String text) {
+    public void enterIntoCityNameFieldOnSelectCityPopUp(String text) throws InterruptedException {
         selectCityPopUp.enterValueIntoField(selectCityPopUp.INPUT_CITY, text);
     }
 

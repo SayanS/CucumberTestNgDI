@@ -10,7 +10,8 @@ import java.io.File;
 import java.util.HashMap;
 
 public class Browser {
-    private WebDriver webDriver;
+    public WebDriver webDriver;
+    private String superValue;
 
     public Browser(){
         String pathToFile = "/home/user/IdeaProjects/eldoradoBdd/src/test/resources/downloads";
@@ -33,10 +34,22 @@ public class Browser {
         options.merge(capabilities);
 
         webDriver = new ChromeDriver(service, options);
+        System.out.println("+++++++++++++ New webdriver +++++++++++++++++++++++++++++++++");
         //  browser.webDriver.manage().window().maximize();
+
     }
+
+
 
     public WebDriver getWebDriver() {
         return webDriver;
+    }
+
+    public void setSuperValue(String value){
+        this.superValue=value;
+    }
+
+    public String getSuperValue(){
+        return this.superValue;
     }
 }

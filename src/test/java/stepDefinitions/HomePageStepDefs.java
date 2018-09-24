@@ -3,19 +3,29 @@ package stepDefinitions;
 import cucumber.api.Transform;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import models.Browser;
 import models.User;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 import pages.HomePage;
 import utils.GenerateUniqueEmail;
+import utils.TestListener;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+@Listeners(TestListener.class)
+@Test
 public class HomePageStepDefs {
     private HomePage homePage;
+    public Browser browser;
 
-    public HomePageStepDefs(HomePage homePage) {
+
+    public HomePageStepDefs(HomePage homePage, Browser browser) {
         this.homePage = homePage;
+        this.browser=browser;
     }
 
     @Given("^Home page is opened$")
@@ -39,4 +49,10 @@ public class HomePageStepDefs {
     }
 
 
+    @When("^Print Super value$")
+    public void printSuperValue() throws Throwable {
+        System.out.println("SHARED VALUE SHARED VALUE SHARED VALUE SHARED VALUE SHARED VALUE SHARED VALUE");
+        System.out.println(browser.getSuperValue());
+        browser.setSuperValue("ну просто супер передача параметра!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    }
 }
