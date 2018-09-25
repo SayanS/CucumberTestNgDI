@@ -5,15 +5,10 @@ import cucumber.api.java.en.When;
 import models.Browser;
 import models.SearchProductAutoSuggestLine;
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
 import pages.Header;
-import utils.TestListener;
 
 import java.util.List;
 
-@Listeners(TestListener.class)
-@Test
 public class HeaderStepdefs {
     private Header header;
    public Browser browser;

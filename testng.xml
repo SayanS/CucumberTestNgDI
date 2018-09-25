@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Suite" parallel="classes" thread-count="2">
+<suite name="Suite" parallel="tests" thread-count="2">
     <test name="Test diary1">
         <classes>
-            <class name="stepDefinitions.RunCukesTest2"></class>
-            <class name="stepDefinitions.RunCukesTest"></class>
+            <class name="runners.RunCukesTest"></class>
         </classes>
     </test>
 
-    <!--<test name="Test diary2">-->
-        <!--<classes>-->
-            <!--<class name="stepDefinitions.HomePageStepDefs"></class>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="Test diary2">
+        <classes>
+            <class name="runners.RunCukesTest2"></class>
+        </classes>
+    </test>
 
 </suite>
 

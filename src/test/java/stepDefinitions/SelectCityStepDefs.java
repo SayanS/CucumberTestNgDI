@@ -2,7 +2,7 @@ package stepDefinitions;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.junit.Assert;
+import org.testng.Assert;
 import pages.SelectCityPopUp;
 
 public class SelectCityStepDefs {

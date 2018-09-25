@@ -4,13 +4,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import models.Browser;
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
 import pages.SearchResultsPage;
-import utils.TestListener;
 
-@Listeners(TestListener.class)
-@Test
 public class SearchResultsStepDefs {
     private SearchResultsPage searchResultsPage;
     public Browser browser;

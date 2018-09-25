@@ -1,23 +1,19 @@
 package stepDefinitions;
 
-import cucumber.api.Transform;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import models.Browser;
 import models.User;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
 import pages.HomePage;
-import utils.GenerateUniqueEmail;
-import utils.TestListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 
-@Listeners(TestListener.class)
-@Test
 public class HomePageStepDefs {
     private HomePage homePage;
     public Browser browser;
@@ -44,7 +40,10 @@ public class HomePageStepDefs {
     }
 
     @Then("^Change user \"([^\"]*)\" to unique value$")
-    public void changeUserToUniqueValue(@Transform(GenerateUniqueEmail.class) String email) {
+    public void changeUserToUniqueValue(String email) {
+        DateFormat sdf = new SimpleDateFormat("MMddHHmmss");
+        Calendar cal = Calendar.getInstance();
+        email=email+sdf.format(cal.getTime());
         System.out.println(email);
     }
 

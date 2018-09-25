@@ -15,11 +15,12 @@ Feature: Global Search functionality
     When Enter "<productName>" into Global Search field
     When Click on Show All button on Autosuggest list
     Then All descriptions of the products in Search results should contain "<productName>"
-  Examples:
-  |productName|
+    Examples:
+      | productName |
+      | фен         |
 #  |микроволнов|
 #  |чайник|
-  |фенf|
+
 
 #  Scenario Outline: Check Search city
 #    Given Home page is opened
