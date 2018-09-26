@@ -12,7 +12,7 @@ Feature: Second Feature Global Search functionality
     Examples:
       | productName |
 #      | ноутбук     |
-      | стрирал  |
+      | стирал  |
 #      | холодильник |
 
   Scenario: Repeated step of printing Super value

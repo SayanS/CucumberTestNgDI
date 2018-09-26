@@ -54,12 +54,6 @@
             <artifactId>cucumber-picocontainer</artifactId>
             <version>4.0.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.14.3</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -99,12 +93,32 @@
                         </goals>
                         <configuration>
                             <projectName>cucumber-testNG-example</projectName>
-                            <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
-                            <cucumberOutput>${project.build.directory}/cucumber-report.json</cucumberOutput>
-                            <parallelTesting>true</parallelTesting>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+                        <!--<cucumberOutput>${project.build.directory}/cucumber-report1.json</cucumberOutput>-->
+                            <!--<parallelTesting>true</parallelTesting>-->
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.trivago.rta</groupId>
+                <artifactId>cluecumber-report-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <id>report</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>reporting</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <sourceJsonReportDirectory>${project.build.directory}</sourceJsonReportDirectory>
+                    <generatedHtmlReportDirectory>${project.build.directory}/test-report</generatedHtmlReportDirectory>
+                </configuration>
             </plugin>
 
         </plugins>

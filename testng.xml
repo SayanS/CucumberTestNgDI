@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Suite" parallel="tests" thread-count="2">
-    <test name="Test diary1">
-        <classes>
-            <class name="runners.RunCukesTest"></class>
-        </classes>
-    </test>
+<!--<suite name="Suite" parallel="tests" verbose="1" configfailurepolicy="continue" thread-count="2">-->
+    <suite name="Suite" verbose="1" configfailurepolicy="continue">
+    <!--<listeners>-->
+        <!--&lt;!&ndash;-->
+        <!--This TestNG listener takes care of setting up and tearing down the Local Selenium driver,-->
+        <!--and it also changes test names in the final TestNG HTML report.-->
+        <!--&ndash;&gt;-->
+        <!--<listener class-name="cucumber.examples.java.testNG.LocalWebDriverListener" />-->
+    <!--</listeners>-->
+    <!--<test name="Test diary1">-->
+        <!--<classes>-->
+            <!--<class name="runners.RunCukesTest1"></class>-->
+        <!--</classes>-->
+    <!--</test>-->
 
-    <test name="Test diary2">
+    <!--<test name="Test diary2">-->
+        <!--<classes>-->
+            <!--<class name="runners.RunCukesTest2"></class>-->
+        <!--</classes>-->
+    <!--</test>-->
+
+    <test name="TestSeries">
         <classes>
-            <class name="runners.RunCukesTest2"></class>
+            <class name="runners.RunCukesTestSeries"></class>
         </classes>
     </test>
 
 </suite>
-
-<!--<suite name="Suite" parallel="tests" thread-count="2" configfailurepolicy="continue">-->
-    <!--<test name="Test diary">-->
-        <!--<packages>-->
-            <!--<package name="stepDefinitions"/>-->
-        <!--</packages>-->
-    <!--</test>-->
-
-<!--</suite>-->
 
