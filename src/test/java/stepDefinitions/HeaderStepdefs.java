@@ -2,7 +2,6 @@ package stepDefinitions;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import models.Browser;
 import models.SearchProductAutoSuggestLine;
 import org.testng.Assert;
 import pages.Header;
@@ -11,11 +10,9 @@ import java.util.List;
 
 public class HeaderStepdefs {
     private Header header;
-   public Browser browser;
 
-    public HeaderStepdefs(Header header, Browser browser) {
+    public HeaderStepdefs(Header header) {
         this.header = header;
-        this.browser = browser;
     }
 
 
@@ -71,14 +68,4 @@ public class HeaderStepdefs {
         header.clickOnShowAllButton();
     }
 
-
-    @When("^Set Super value \"([^\"]*)\"$")
-    public void setSuperValue(String value) throws Throwable {
-        this.browser.setSuperValue(value);
-    }
-
-    @When("^Reprint Super value$")
-    public void reprintSuperValue() throws Throwable {
-        System.out.println(browser.getSuperValue());
-    }
 }

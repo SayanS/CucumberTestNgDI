@@ -6,12 +6,10 @@ import org.openqa.selenium.WebDriver;
 import java.util.List;
 
 public class SelectCityPopUp extends BasePage {
-//    private Browser browser;
     private WebDriver webDriver;
 
     public SelectCityPopUp(Browser browser) {
         super(browser);
-//        this.browser=browser;
         this.webDriver = browser.getWebDriver();
     }
 

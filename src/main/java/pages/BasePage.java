@@ -15,12 +15,10 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class BasePage {
     private WebDriver webDriver;
-//    private Browser browser;
 
     public BasePage(Browser browser) {
         this.webDriver=browser.getWebDriver();
         System.out.println("HASH CODE OF THE BROWSER ---------->>> "+browser.hashCode());
-        // PageFactory.initElements(this.webDriver, this);
     }
 
     protected WebElement findBy(String xpath) {

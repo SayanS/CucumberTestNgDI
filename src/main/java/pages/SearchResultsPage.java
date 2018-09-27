@@ -4,7 +4,6 @@ import models.Browser;
 import org.openqa.selenium.WebDriver;
 
 public class SearchResultsPage extends BasePage{
-//    private Browser browser;
     private WebDriver webDriver;
 
     public SearchResultsPage(Browser browser){

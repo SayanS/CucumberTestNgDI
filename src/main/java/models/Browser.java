@@ -1,55 +1,39 @@
 package models;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
-import java.io.File;
-import java.util.HashMap;
 
 public class Browser {
-    public WebDriver webDriver;
-    private String superValue;
+    private WebDriver webDriver;
+    private String browser;
+    private String baseUrl;
+    final public  String PATH_DOWNLOAD = "/home/user/IdeaProjects/eldoradoBdd/src/test/resources/downloads";
+    final public  String PATH_WEBDRIVER="./src/test/resources/webdrivers";
 
-    public Browser(){
-        String pathToFile = "/home/user/IdeaProjects/eldoradoBdd/src/test/resources/downloads";
-
-        HashMap<String, Object> chromePrefs = new HashMap<>();
-        chromePrefs.put("profile.default_content_settings.popups", 0);
-        chromePrefs.put("download.default_directory", System.getProperty("user.dir") + new File(pathToFile));
-
-        ChromeOptions options = new ChromeOptions();
-        options.setExperimentalOption("prefs", chromePrefs);
-        options.addArguments("--disable-popup-blocking");
-        options.addArguments("--start-maximized");
-
-        ChromeDriverService service = new ChromeDriverService.Builder()
-                .usingDriverExecutable(new File("./src/test/resources/webdrivers/chromedriver"))
-                .usingAnyFreePort()
-                .build();
-
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        options.merge(capabilities);
-
-        webDriver = new ChromeDriver(service, options);
-        System.out.println("+++++++++++++ New webdriver +++++++++++++++++++++++++++++++++");
-        //  browser.webDriver.manage().window().maximize();
-
+    public Browser() {
     }
-
-
 
     public WebDriver getWebDriver() {
-        return webDriver;
+        return this.webDriver;
     }
 
-    public void setSuperValue(String value){
-        this.superValue=value;
+    public void setWebDriver(WebDriver webDriver){
+        this.webDriver=webDriver;
     }
 
-    public String getSuperValue(){
-        return this.superValue;
+    public String getBaseUrl() {
+        return this.baseUrl;
+    }
+
+    public void setBaseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
+
+    public void setBrowser(String browser) {
+        this.browser = browser;
+    }
+
+    public String getBrowser(){
+        return  this.browser;
     }
 }
+

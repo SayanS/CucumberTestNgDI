@@ -2,8 +2,6 @@ package stepDefinitions;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import models.Browser;
 import models.User;
 import pages.HomePage;
 
@@ -16,12 +14,9 @@ import java.util.List;
 
 public class HomePageStepDefs {
     private HomePage homePage;
-    public Browser browser;
 
-
-    public HomePageStepDefs(HomePage homePage, Browser browser) {
+    public HomePageStepDefs(HomePage homePage) {
         this.homePage = homePage;
-        this.browser=browser;
     }
 
     @Given("^Home page is opened$")
@@ -45,13 +40,5 @@ public class HomePageStepDefs {
         Calendar cal = Calendar.getInstance();
         email=email+sdf.format(cal.getTime());
         System.out.println(email);
-    }
-
-
-    @When("^Print Super value$")
-    public void printSuperValue() throws Throwable {
-        System.out.println("SHARED VALUE SHARED VALUE SHARED VALUE SHARED VALUE SHARED VALUE SHARED VALUE");
-        System.out.println(browser.getSuperValue());
-        browser.setSuperValue("ну просто супер передача параметра!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 }
