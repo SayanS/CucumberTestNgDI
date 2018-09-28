@@ -1,11 +1,8 @@
-package pages;
-
+package utils;
 
 import com.google.common.base.Function;
-import models.Browser;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -14,74 +11,73 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public abstract class BasePage {
-    private WebDriver webDriver;
+public class PageHelpers {
+    static WebDriver webDriver;
 
-    public BasePage(Browser browser) {
-        this.webDriver = browser.getWebDriver();
-        PageFactory.initElements(webDriver,this);
+    public PageHelpers(WebDriver webDriver) {
+        this.webDriver = webDriver;
     }
 
-    protected WebElement findBy(String xpath_css) {
+    public static WebElement findBy(String xpath_css) {
         if (xpath_css.contains("//")) {
             return webDriver
                     .findElement(By.xpath(xpath_css));
-        }else {
+        } else {
             return webDriver.findElement(By.cssSelector(xpath_css));
         }
     }
 
-    protected WebElement find(By byXpath) {
+    public static WebElement find(By byXpath) {
         return webDriver.findElement(byXpath);
     }
 
-    protected List<WebElement> findAllBy(String xpath) {
+    public static List<WebElement> findAllBy(String xpath) {
         return webDriver.findElements(By.xpath(xpath));
     }
 
-    protected List<String> getTextValuesFrom(List<WebElement> webElements) {
+    public static List<String> getTextValuesFrom(List<WebElement> webElements) {
         List<String> textValues = new ArrayList<>();
         webElements.forEach(webElement -> textValues.add(webElement.getText()));
         return textValues;
     }
 
-    public List<String> getTextValuesOf(String xpath) {
+    public static List<String> getTextValuesOf(String xpath) {
         List<String> textValues = new ArrayList<>();
         findAllBy(xpath).forEach(webElement -> textValues.add(webElement.getText()));
         return textValues;
     }
 
-    public String getTextOf(String xpath) {
+    public static String getTextOf(String xpath) {
         return findBy(xpath).getText();
     }
 
-    public String getTextOf(String xpath, String keyWord) {
+    public static String getTextOf(String xpath, String keyWord) {
         return getTextOf(xpath.replace("$KeyWord", keyWord));
     }
 
-    public void clickOnByXpathJS(String xpath) {
+    public static void clickOnByXpathJS(String xpath) {
         ((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", findBy(xpath));
     }
 
-    public void scrollIntoView(String xpath, int offset_y) {
+    public static void scrollIntoView(String xpath, int offset_y) {
         int y = webDriver.findElement(By.xpath(xpath)).getLocation().getY() + offset_y;
         ((JavascriptExecutor) webDriver).executeScript("window.scrollTo(0, " + y + ")");
     }
 
-    public void scrollIntoView(String xpath) {
+    public static void scrollIntoView(String xpath) {
         int y = webDriver.findElement(By.xpath(xpath)).getLocation().getY();
         int x = webDriver.findElement(By.xpath(xpath)).getLocation().getX();
         ((JavascriptExecutor) webDriver)
                 .executeScript("window.scrollTo(" + x + "," + y + ")");
     }
 
-    protected WebElement moveTo(String xpath) {
+    public static WebElement moveTo(String xpath) {
         Actions actions = new Actions(webDriver);
         actions.moveToElement(findBy(xpath)).perform();
         return findBy(xpath);
     }
 
-    public void clickOnByXpath(String xpath) {
+    public static void clickOnByXpath(String xpath) {
         waitFor(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)), TimeUnit.SECONDS, 5);
         scrollIntoView(xpath, -100);
         moveTo(xpath);
@@ -89,11 +85,11 @@ public abstract class BasePage {
         findBy(xpath).click();
     }
 
-    public void clickOnByXpath(String xpath, String keyWord) {
+    public static  void clickOnByXpath(String xpath, String keyWord) {
         clickOnByXpath(xpath.replace("$KeyWord", keyWord));
     }
 
-    protected <V> V waitFor(Function<? super WebDriver, V> condition, TimeUnit timeUnit, int timeout) {
+    public static <V> V waitFor(Function<? super WebDriver, V> condition, TimeUnit timeUnit, int timeout) {
         try {
             Wait<WebDriver> wait = new FluentWait<>(webDriver).withTimeout(timeout, timeUnit)
                     .ignoring(NoSuchElementException.class)
@@ -106,11 +102,11 @@ public abstract class BasePage {
         }
     }
 
-    public Boolean waitForTextToBePresentIn(String xpath, String text, Integer seconds) {
+    public static Boolean waitForTextToBePresentIn(String xpath, String text, Integer seconds) {
         return waitFor(ExpectedConditions.textToBePresentInElementLocated(By.xpath(xpath), text), TimeUnit.SECONDS, seconds);
     }
 
-    public Boolean waitForVisibilityOfElementLocatedByXpath(String xpath, Integer seconds) {
+    public static Boolean waitForVisibilityOfElementLocatedByXpath(String xpath, Integer seconds) {
         waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)), TimeUnit.SECONDS, seconds);
         if (waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)), TimeUnit.SECONDS, seconds) != null) {
             return true;
@@ -118,7 +114,7 @@ public abstract class BasePage {
         return false;
     }
 
-    public void enterValueIntoField(String xpath, String value) throws InterruptedException {
+    public static void enterValueIntoField(String xpath, String value) throws InterruptedException {
         waitFor(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)), TimeUnit.SECONDS, 5);
         scrollIntoView(xpath);
         waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)), TimeUnit.SECONDS, 5);
@@ -126,6 +122,4 @@ public abstract class BasePage {
         findBy(xpath).sendKeys(value);
 //        Thread.sleep(1000);
     }
-
-
 }

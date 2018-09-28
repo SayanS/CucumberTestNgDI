@@ -27,9 +27,15 @@ public class Hooks {
 
     @Before
     public void setUpBrowser() throws InterruptedException {
-        browser.setBrowser(System.getProperty("browser"));
-        this.browser.setBaseUrl(System.getProperty("baseUrl"));
-        System.out.println(this.browser);
+
+        if(System.getProperty("browser")==null){
+            browser.setBrowser("chrome");
+            this.browser.setBaseUrl("https://eldorado.ua/");
+        }else {
+            browser.setBrowser(System.getProperty("browser"));
+            this.browser.setBaseUrl(System.getProperty("baseUrl"));
+        }
+
          switch (browser.getBrowser()) {
             case "chrome": {
                 HashMap<String, Object> chromePrefs = new HashMap();

@@ -117,7 +117,7 @@
                             <projectName>cucumber-testNG-example</projectName>
                             <outputDirectory>${project.build.directory}</outputDirectory>
                             <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
-                        <!--<cucumberOutput>${project.build.directory}/cucumber-report1.json</cucumberOutput>-->
+                            <!--<cucumberOutput>${project.build.directory}/cucumber-report1.json</cucumberOutput>-->
                             <!--<parallelTesting>true</parallelTesting>-->
                         </configuration>
                     </execution>

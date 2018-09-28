@@ -68,4 +68,13 @@ public class HeaderStepdefs {
         header.clickOnShowAllButton();
     }
 
+    @When("^Click on Global Search button in Header$")
+    public void clickOnGlobalSearchButtonInHeader() {
+        header.clickOnGlobalSearchButton();
+    }
+
+    @When("^Click on Global Search button of Autosuggest field in Header$")
+    public void clickOnGlobalSearchButtonOfAutosuggestFieldInHeader() throws Throwable {
+      header.clickOnGlobalSearchButtonOfAutosuggestField();
+    }
 }

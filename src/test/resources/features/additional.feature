@@ -1,14 +1,11 @@
 @run
-Feature: Second Feature Global Search functionality
-
-  Scenario Outline: Second Feature Search by product name
+Feature: Checking additional functionality
+  Background:
     Given Home page is opened
-    When Enter "<productName>" into Global Search field
+
+  Scenario: Second Feature Search by product name
+    When Enter "Ноутбук" into Global Search field
     When Click on Show All button on Autosuggest list
-    Then All descriptions of the products in Search results should contain "<productName>"
-    Examples:
-      | productName |
-#      | ноутбук     |
-      | стирал  |
-#      | холодильник |
+#    When Click on Global Search button of Autosuggest field in Header
+    When Add to cart first product from Search results
 
