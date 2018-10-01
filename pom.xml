@@ -142,10 +142,7 @@
                     <generatedHtmlReportDirectory>${project.build.directory}/test-report</generatedHtmlReportDirectory>
                 </configuration>
             </plugin>
-
         </plugins>
-<!--аырвлдоыпрвоп-->
-             <!--Хуй пизде не товарищ!!!!!-->
     </build>
 
 
