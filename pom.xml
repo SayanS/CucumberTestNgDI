@@ -142,12 +142,6 @@
                     <generatedHtmlReportDirectory>${project.build.directory}/test-report</generatedHtmlReportDirectory>
                 </configuration>
             </plugin>
-
         </plugins>
-        <!--Еще один функционал 00-->
     </build>
-аааааааааааааааааа
 </project>
-
-</project>
-1111111111111111111111
