@@ -142,9 +142,12 @@
                     <generatedHtmlReportDirectory>${project.build.directory}/test-report</generatedHtmlReportDirectory>
                 </configuration>
             </plugin>
+
         </plugins>
+             <!--Хуй пизде не товарищ!!!!!-->
+        <!--Еще один функционал-->
+        <!--Еще один функционал 2 -->
     </build>
-<!-- New on Git Hub 888888888888888888888888888888888-->
+
 
 </project>
-erreeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
